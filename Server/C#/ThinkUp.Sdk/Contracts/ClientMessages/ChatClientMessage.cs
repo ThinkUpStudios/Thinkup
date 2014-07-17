@@ -2,12 +2,10 @@
 {
     public class ChatClientMessage : IClientMessage
     {
+        public string ConversationName { get; set; }
+
         public string UserName { get; set; }
 
-        public string ToUserName { get; set; }
-
         public string Message { get; set; }
-
-        public bool IsGroupChat { get; set; }
     }
 }

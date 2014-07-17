@@ -5,7 +5,7 @@ namespace ThinkUp.Sdk.Services
 {
     public interface IConversationService
     {
-        IEnumerable<IConversation> GetAllByUser(string userName);
+        IEnumerable<IConversation> GetAllByParticipant(string userName);
 
         IConversation GetByName(string conversationName);
 
@@ -23,7 +23,7 @@ namespace ThinkUp.Sdk.Services
         void AddMessage(string conversationName, string userName, string message);
 
         ///<exception cref="ServiceException">ServiceException</exception>
-        void AddUser(string conversationName, string userName);
+        void AddParticipant(string conversationName, string userName);
 
         ///<exception cref="ServiceException">ServiceException</exception>
         void DeleteConversation(string conversationName);
