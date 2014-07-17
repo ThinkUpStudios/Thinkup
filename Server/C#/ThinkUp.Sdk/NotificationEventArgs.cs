@@ -1,5 +1,5 @@
 ﻿using System;
-using ThinkUp.Sdk.Contracts;
+using ThinkUp.Sdk.Contracts.ServerMessages;
 
 namespace ThinkUp.Sdk
 {
@@ -7,12 +7,12 @@ namespace ThinkUp.Sdk
     {
         public string Receiver { get; set; }
 
-        public ContractMessage Notification { get; set; }
+        public ServerContract Notification { get; set; }
 
-        public NotificationEventArgs(string receiver, ContractMessage notification)
+        public NotificationEventArgs(string receiver, ServerContract serverContract)
         {
             this.Receiver = receiver;
-            this.Notification = notification;
+            this.Notification = serverContract;
         }
 
         public NotificationEventArgs()

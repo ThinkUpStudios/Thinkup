@@ -1,5 +1,5 @@
 ﻿using System;
-using ThinkUp.Sdk.Contracts;
+using ThinkUp.Sdk.Contracts.ServerMessages;
 
 namespace ThinkUp.Sdk.Services
 {
@@ -11,6 +11,6 @@ namespace ThinkUp.Sdk.Services
 
         void Send(int notificationType, object serverMessage, string userName);
 
-        void Send(ContractMessage notification, string userName);
+        void Send(ServerContract serverContract, string userName);
     }
 }
