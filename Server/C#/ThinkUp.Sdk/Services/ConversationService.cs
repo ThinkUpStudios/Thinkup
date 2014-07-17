@@ -16,7 +16,7 @@ namespace ThinkUp.Sdk.Services
             this.conversationRepository = conversationRepository;
         }
 
-        public IEnumerable<IConversation> GetAllByUser(string userName)
+        public IEnumerable<IConversation> GetAllByParticipant(string userName)
         {
             return this.conversationRepository.GetAll(c => c.Participants.Contains(userName));
         }
@@ -110,7 +110,7 @@ namespace ThinkUp.Sdk.Services
         }
 
         ///<exception cref="ServiceException">ServiceException</exception>
-        public void AddUser(string conversationName, string userName)
+        public void AddParticipant(string conversationName, string userName)
         {
             var existingConversation = this.conversationRepository.Get(c => c.Name == conversationName);
 

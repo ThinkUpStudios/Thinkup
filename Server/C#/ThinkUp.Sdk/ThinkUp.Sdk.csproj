@@ -53,10 +53,8 @@
   <ItemGroup>
     <Compile Include="Components\ComponentBase.cs" />
     <Compile Include="Components\ComponentException.cs" />
-    <Compile Include="Components\ConnectedUsersComponent.cs" />
-    <Compile Include="Components\ConnectUserComponent.cs" />
-    <Compile Include="Components\ConversationComponent.cs" />
-    <Compile Include="Components\DisconnectUserComponent.cs" />
+    <Compile Include="Components\UsersComponent.cs" />
+    <Compile Include="Components\ConversationsComponent.cs" />
     <Compile Include="Components\IComponent.cs" />
     <Compile Include="Contracts\ClientMessages\ChatClientMessage.cs" />
     <Compile Include="Contracts\ClientMessages\ClientContract.cs" />
@@ -64,10 +62,18 @@
     <Compile Include="Contracts\ClientMessages\ConnectUserClientMessage.cs" />
     <Compile Include="Contracts\ClientMessages\DisconnectUserClientMessage.cs" />
     <Compile Include="Contracts\ClientMessages\GetConnectedUsersClientMessage.cs" />
+    <Compile Include="Contracts\ClientMessages\GetConversationClientMessage.cs" />
+    <Compile Include="Contracts\ClientMessages\GetConversationsClientMessage.cs" />
     <Compile Include="Contracts\ClientMessages\IClientMessage.cs" />
+    <Compile Include="Contracts\ClientMessages\LeaveConversationClientMessage.cs" />
+    <Compile Include="Contracts\ClientMessages\NewConversationClientMessage.cs" />
+    <Compile Include="Contracts\ClientMessages\NewConversationParticipantClientMessage.cs" />
     <Compile Include="Contracts\ClientMessages\TypingChatClientMessage.cs" />
     <Compile Include="Contracts\ServerMessages\ChatReceivedServerMessage.cs" />
     <Compile Include="Contracts\ServerMessages\ConnectedUsersListServerMessage.cs" />
+    <Compile Include="Contracts\ServerMessages\ConversationDetailServerMessage.cs" />
+    <Compile Include="Contracts\ServerMessages\ConversationLeftServerMessage.cs" />
+    <Compile Include="Contracts\ServerMessages\ConversationsListServerMessage.cs" />
     <Compile Include="Contracts\ServerMessages\ErrorServerMessage.cs" />
     <Compile Include="Contracts\ServerMessages\IServerMessage.cs" />
     <Compile Include="Contracts\ServerMessages\ServerContract.cs" />
