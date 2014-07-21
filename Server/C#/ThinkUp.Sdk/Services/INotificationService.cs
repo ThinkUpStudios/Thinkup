@@ -1,5 +1,4 @@
 ﻿using System;
-using ThinkUp.Sdk.Contracts.ServerMessages;
 
 namespace ThinkUp.Sdk.Services
 {
@@ -10,7 +9,5 @@ namespace ThinkUp.Sdk.Services
         void SendBroadcast(int notificationType, object serverMessage, params string[] userNames);
 
         void Send(int notificationType, object serverMessage, string userName);
-
-        void Send(ServerContract serverContract, string userName);
     }
 }

@@ -9,13 +9,11 @@ namespace ThinkUp.Sdk.Components
     public class ConversationsComponent : ComponentBase
     {
         private readonly IConversationService conversationService;
-        private readonly ISerializer serializer;
 
         public ConversationsComponent(IConversationService conversationService, INotificationService notificationService, ISerializer serializer)
-            : base(notificationService)
+            : base(notificationService, serializer)
         {
             this.conversationService = conversationService;
-            this.serializer = serializer;
         }
 
         public override bool CanHandleClientMessage(ClientContract clientContract)

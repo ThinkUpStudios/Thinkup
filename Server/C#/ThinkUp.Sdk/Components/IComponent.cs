@@ -11,7 +11,7 @@ namespace ThinkUp.Sdk.Components
 
     public interface IComponent : IComponentInformation
     {
-        event EventHandler<NotificationEventArgs> Notification;
+        event EventHandler<ServerMessageEventArgs> ServerMessage;
 
         bool CanHandleClientMessage(ClientContract clientContract);
 
