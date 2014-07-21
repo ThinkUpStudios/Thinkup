@@ -1,18 +1,20 @@
 ﻿using System;
-using ThinkUp.Sdk.Contracts.ServerMessages;
 
 namespace ThinkUp.Sdk
 {
     public class NotificationEventArgs : EventArgs
     {
+        public int NotificationType { get; set; }
+
+        public object Notification { get; set; }
+
         public string Receiver { get; set; }
 
-        public ServerContract Notification { get; set; }
-
-        public NotificationEventArgs(string receiver, ServerContract serverContract)
+        public NotificationEventArgs(int notificationType, object notification, string receiver)
         {
+            this.NotificationType = notificationType;
+            this.Notification = notification;
             this.Receiver = receiver;
-            this.Notification = serverContract;
         }
 
         public NotificationEventArgs()

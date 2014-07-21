@@ -1,6 +1,4 @@
 ﻿using System;
-using ThinkUp.Sdk.Contracts;
-using ThinkUp.Sdk.Contracts.ServerMessages;
 
 namespace ThinkUp.Sdk.Services
 {
@@ -25,22 +23,11 @@ namespace ThinkUp.Sdk.Services
 
         public void Send(int notificationType, object serverMessage, string userName)
         {
-            var notification = new ServerContract
+            var notificationHandler = this.Notification;
+
+            if (notificationHandler != null)
             {
-                Type = notificationType,
-                SerializedServerMessage = this.serializer.Serialize(serverMessage)
-            };
-
-            this.Send(notification, userName);
-        }
-
-        public void Send(ServerContract serverContract, string userName)
-        {
-            var sendMessageHandler = this.Notification;
-
-            if (sendMessageHandler != null)
-            {
-                sendMessageHandler(this, new NotificationEventArgs(userName, serverContract));
+                notificationHandler(this, new NotificationEventArgs(notificationType, serverMessage, userName));
             }
         }
     }

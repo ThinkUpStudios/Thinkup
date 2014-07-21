@@ -8,13 +8,11 @@ namespace ThinkUp.Sdk.Components
     public class UsersComponent : ComponentBase
     {
         private readonly IUserService userService;
-        private readonly ISerializer serializer;
 
         public UsersComponent(IUserService userService, INotificationService notificationService, ISerializer serializer)
-            : base(notificationService)
+            : base(notificationService, serializer)
         {
             this.userService = userService;
-            this.serializer = serializer;
         }
 
         public override bool CanHandleClientMessage(ClientContract clientContract)

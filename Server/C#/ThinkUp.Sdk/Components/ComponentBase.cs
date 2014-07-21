@@ -7,27 +7,37 @@ namespace ThinkUp.Sdk.Components
 {
     public abstract class ComponentBase : IComponent
     {
+        protected readonly ISerializer serializer;
         protected readonly INotificationService notificationService;
 
-        public event EventHandler<NotificationEventArgs> Notification;
+        public event EventHandler<ServerMessageEventArgs> ServerMessage;
 
         public string Name
         {
             get { return this.GetType().Name; }
         }
 
-        protected ComponentBase(INotificationService notificationService)
+        protected ComponentBase(INotificationService notificationService, ISerializer serializer)
         {
+            this.serializer = serializer;
             this.notificationService = notificationService;
             this.notificationService.Notification += (sender, e) =>
             {
-                if (this.CanHandleServerMessage(e.Notification))
+                var contract = new ServerContract
                 {
-                    var notificationHandler = this.Notification;
+                    Type = e.NotificationType,
+                    SerializedServerMessage = this.serializer.Serialize(e.Notification)
+                };
 
-                    if (notificationHandler != null)
+                if (this.CanHandleServerMessage(contract))
+                {
+                    var serverMessageHandler = this.ServerMessage;
+
+                    if (serverMessageHandler != null)
                     {
-                        notificationHandler(this, e);
+                        var serverMessageArgs = new ServerMessageEventArgs(contract, e.Receiver);
+
+                        serverMessageHandler(this, serverMessageArgs);
                     }
                 }
             };
