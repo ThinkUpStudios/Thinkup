@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="MongoDB.Bson">
       <HintPath>..\packages\mongocsharpdriver.1.9.2\lib\net35\MongoDB.Bson.dll</HintPath>
     </Reference>
@@ -51,11 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\ComponentBase.cs" />
-    <Compile Include="Components\ComponentException.cs" />
-    <Compile Include="Components\UsersComponent.cs" />
-    <Compile Include="Components\ConversationsComponent.cs" />
-    <Compile Include="Components\IComponent.cs" />
+    <Compile Include="Plugins\PluginComponents\PluginComponentBase.cs" />
+    <Compile Include="Plugins\PluginComponents\PluginComponentException.cs" />
+    <Compile Include="Plugins\PluginComponents\UsersPluginComponent.cs" />
+    <Compile Include="Plugins\PluginComponents\ConversationsPluginComponent.cs" />
+    <Compile Include="Plugins\PluginComponents\IPluginComponent.cs" />
     <Compile Include="Contracts\ClientMessages\ChatClientMessage.cs" />
     <Compile Include="Contracts\ClientMessages\ClientContract.cs" />
     <Compile Include="Contracts\ClientMessages\ClientMessageType.cs" />
@@ -96,10 +99,10 @@
     <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="ISerializer.cs" />
     <Compile Include="JsonSerializer.cs" />
-    <Compile Include="Modules\IModule.cs" />
-    <Compile Include="Modules\IModuleFactory.cs" />
-    <Compile Include="Modules\Module.cs" />
-    <Compile Include="Modules\ThinkUpModuleFactory.cs" />
+    <Compile Include="Plugins\IPlugin.cs" />
+    <Compile Include="Plugins\IPluginBuilder.cs" />
+    <Compile Include="Plugins\Plugin.cs" />
+    <Compile Include="Plugins\PluginBuilder.cs" />
     <Compile Include="NotificationEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerMessageEventArgs.cs" />
@@ -110,10 +113,20 @@
     <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Services\ServiceException.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Setup\Dependencies\DependencyContainer.cs" />
+    <Compile Include="Setup\Dependencies\DependencyContainerBuilder.cs" />
+    <Compile Include="Setup\Dependencies\IDependencyContainer.cs" />
+    <Compile Include="Setup\Dependencies\IDependencyContainerBuilder.cs" />
+    <Compile Include="Setup\IConfigurator.cs" />
+    <Compile Include="Setup\ISetupManager.cs" />
+    <Compile Include="Setup\SetupManager.cs" />
+    <Compile Include="Setup\SetupException.cs" />
+    <Compile Include="Setup\ThinkUpConfigurator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

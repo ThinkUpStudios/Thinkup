@@ -2,14 +2,14 @@
 using ThinkUp.Sdk.Contracts.ClientMessages;
 using ThinkUp.Sdk.Contracts.ServerMessages;
 
-namespace ThinkUp.Sdk.Components
+namespace ThinkUp.Sdk.Plugins.PluginComponents
 {
-    public interface IComponentInformation
+    public interface IPluginComponentInformation
     {
         string Name { get; }
     }
 
-    public interface IComponent : IComponentInformation
+    public interface IPluginComponent : IPluginComponentInformation
     {
         event EventHandler<ServerMessageEventArgs> ServerMessage;
 
@@ -17,7 +17,7 @@ namespace ThinkUp.Sdk.Components
 
         bool CanHandleServerMessage(ServerContract serverContract);
 
-        ///<exception cref="ComponentException">ComponentException</exception>
+        ///<exception cref="PluginComponentException">ComponentException</exception>
         ///<exception cref="ServiceException">ServiceException</exception>
         void HandleClientMessage(ClientContract clientContract);
     }

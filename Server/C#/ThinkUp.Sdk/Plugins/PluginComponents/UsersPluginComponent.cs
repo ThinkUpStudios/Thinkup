@@ -3,13 +3,13 @@ using ThinkUp.Sdk.Contracts.ClientMessages;
 using ThinkUp.Sdk.Contracts.ServerMessages;
 using ThinkUp.Sdk.Services;
 
-namespace ThinkUp.Sdk.Components
+namespace ThinkUp.Sdk.Plugins.PluginComponents
 {
-    public class UsersComponent : ComponentBase
+    public class UsersPluginComponent : PluginComponentBase
     {
         private readonly IUserService userService;
 
-        public UsersComponent(IUserService userService, INotificationService notificationService, ISerializer serializer)
+        public UsersPluginComponent(IUserService userService, INotificationService notificationService, ISerializer serializer)
             : base(notificationService, serializer)
         {
             this.userService = userService;
