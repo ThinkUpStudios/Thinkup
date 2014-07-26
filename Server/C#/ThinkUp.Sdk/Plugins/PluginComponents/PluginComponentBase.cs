@@ -3,9 +3,9 @@ using ThinkUp.Sdk.Contracts.ClientMessages;
 using ThinkUp.Sdk.Contracts.ServerMessages;
 using ThinkUp.Sdk.Services;
 
-namespace ThinkUp.Sdk.Components
+namespace ThinkUp.Sdk.Plugins.PluginComponents
 {
-    public abstract class ComponentBase : IComponent
+    public abstract class PluginComponentBase : IPluginComponent
     {
         protected readonly ISerializer serializer;
         protected readonly INotificationService notificationService;
@@ -17,7 +17,7 @@ namespace ThinkUp.Sdk.Components
             get { return this.GetType().Name; }
         }
 
-        protected ComponentBase(INotificationService notificationService, ISerializer serializer)
+        protected PluginComponentBase(INotificationService notificationService, ISerializer serializer)
         {
             this.serializer = serializer;
             this.notificationService = notificationService;
@@ -47,7 +47,7 @@ namespace ThinkUp.Sdk.Components
 
         public abstract bool CanHandleServerMessage(ServerContract serverContract);
 
-        ///<exception cref="ComponentException">ComponentException</exception>
+        ///<exception cref="PluginComponentException">ComponentException</exception>
         ///<exception cref="ServiceException">ServiceException</exception>
         public abstract void HandleClientMessage(ClientContract clientContract);
     }

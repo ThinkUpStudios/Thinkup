@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using ThinkUp.Sdk.Components;
+using ThinkUp.Sdk.Plugins.PluginComponents;
 
-namespace ThinkUp.Sdk.Modules
+namespace ThinkUp.Sdk.Plugins
 {
-    public interface IModule
+    public interface IPlugin
     {
         event EventHandler<ServerMessageEventArgs> ServerMessage;
 
@@ -13,10 +13,10 @@ namespace ThinkUp.Sdk.Modules
         void HandleClientMessage(string serializedClientMessage);
     }
 
-    public interface IModuleSetup : IModule
+    public interface IPluginSetup : IPlugin
     {
-        IEnumerable<IComponentInformation> Components { get; }
+        IEnumerable<IPluginComponentInformation> Components { get; }
 
-        void RegisterComponent(IComponent component);
+        void RegisterComponent(IPluginComponent component);
     }
 }

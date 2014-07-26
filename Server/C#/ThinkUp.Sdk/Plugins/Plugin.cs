@@ -1,31 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ThinkUp.Sdk.Components;
 using ThinkUp.Sdk.Contracts.ClientMessages;
 using ThinkUp.Sdk.Contracts.ServerMessages;
+using ThinkUp.Sdk.Plugins.PluginComponents;
 using ThinkUp.Sdk.Services;
 
-namespace ThinkUp.Sdk.Modules
+namespace ThinkUp.Sdk.Plugins
 {
-    public class Module : IModuleSetup
+    public class Plugin : IPluginSetup
     {
         private readonly ISerializer serializer;
-        private readonly IList<IComponent> components;
+        private readonly IList<IPluginComponent> components;
 
         public event EventHandler<ServerMessageEventArgs> ServerMessage;
 
-        public IEnumerable<IComponentInformation> Components { get { return this.components; } }
+        public IEnumerable<IPluginComponentInformation> Components { get { return this.components; } }
 
-        public Module(ISerializer serializer)
-            : this(serializer, new List<IComponent>())
+        public Plugin(ISerializer serializer)
+            : this(serializer, new List<IPluginComponent>())
         {
         }
 
-        public Module(ISerializer serializer, IList<IComponent> components)
+        public Plugin(ISerializer serializer, IList<IPluginComponent> components)
         {
             this.serializer = serializer;
-            this.components = new List<IComponent>();
+            this.components = new List<IPluginComponent>();
 
             foreach (var component in components)
             {
@@ -33,7 +33,7 @@ namespace ThinkUp.Sdk.Modules
             }
         }
 
-        public void RegisterComponent(IComponent component)
+        public void RegisterComponent(IPluginComponent component)
         {
             if (!this.components.Any(c => c.Name == component.Name))
             {
@@ -78,7 +78,7 @@ namespace ThinkUp.Sdk.Modules
             {
                 this.SendErrorNotification(serviceEx, receiver: clientContract.Sender);
             }
-            catch (ComponentException componentEx)
+            catch (PluginComponentException componentEx)
             {
                 this.SendErrorNotification(componentEx, receiver: clientContract.Sender);
             }

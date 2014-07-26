@@ -4,13 +4,13 @@ using ThinkUp.Sdk.Contracts.ClientMessages;
 using ThinkUp.Sdk.Contracts.ServerMessages;
 using ThinkUp.Sdk.Services;
 
-namespace ThinkUp.Sdk.Components
+namespace ThinkUp.Sdk.Plugins.PluginComponents
 {
-    public class ConversationsComponent : ComponentBase
+    public class ConversationsPluginComponent : PluginComponentBase
     {
         private readonly IConversationService conversationService;
 
-        public ConversationsComponent(IConversationService conversationService, INotificationService notificationService, ISerializer serializer)
+        public ConversationsPluginComponent(IConversationService conversationService, INotificationService notificationService, ISerializer serializer)
             : base(notificationService, serializer)
         {
             this.conversationService = conversationService;
