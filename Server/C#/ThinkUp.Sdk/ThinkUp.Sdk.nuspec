@@ -8,7 +8,7 @@
     <owners>$author$</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Version 1 of Think Up Sdk</releaseNotes>
+    <releaseNotes>Fix on Conversation Detail Server Message</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>thinkup</tags>
   </metadata>

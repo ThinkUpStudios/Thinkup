@@ -23,6 +23,12 @@ namespace ThinkUp.Sdk.Contracts.ServerMessages
 
         public IEnumerable<ChatMessage> Messages { get { return this.messages; } }
 
+        public ConversationDetailServerMessage()
+        {
+            this.participants = new List<string>();
+            this.messages = new List<ChatMessage>();
+        }
+
         public void AddParticipant(string participant)
         {
             this.participants.Add(participant);
