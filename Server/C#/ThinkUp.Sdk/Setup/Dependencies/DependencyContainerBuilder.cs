@@ -100,9 +100,9 @@ namespace ThinkUp.Sdk.Setup.Dependencies
                 throw new SetupException(errorMessage, ex);
             }
 
-            var gameDependencyModule = new DependencyContainer(container);
+            var dependencyModule = new DependencyContainer(container);
 
-            return gameDependencyModule;
+            return dependencyModule;
         }
 
         private void SetDependency(Action setDependencyAction)
