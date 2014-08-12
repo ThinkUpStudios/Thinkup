@@ -8,7 +8,8 @@ namespace ThinkUp.Sdk.Tests.TestModels
     {
         public void ConfigureDependencies(IDependencyContainerBuilder dependencyContainerBuilder)
         {
-            dependencyContainerBuilder.SetDependency<IPluginComponent, TestPluginComponent>();
+            dependencyContainerBuilder.SetDependency<IPluginComponent, TestPluginComponentFoo>();
+            dependencyContainerBuilder.SetDependency<IPluginComponent, TestPluginComponentBar>();
         }
     }
 }

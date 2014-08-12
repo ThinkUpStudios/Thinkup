@@ -61,18 +61,21 @@ namespace ThinkUp.Sdk.Plugins
         public void HandleClientMessage(string serializedClientMessage)
         {
             var clientContract = this.serializer.Deserialize<ClientContract>(serializedClientMessage);
-            var component = this.components.FirstOrDefault(c => c.CanHandleClientMessage(clientContract));
+            var components = this.components.Where(c => c.CanHandleClientMessage(clientContract));
 
-            if (component == null)
+            if (!components.Any())
             {
-                var errorMessage = string.Format("There is no component registered to handle client message of type {0}", clientContract.Type);
+                var errorMessage = string.Format("There are no components registered to handle client message of type {0}", clientContract.Type);
 
                 this.SendErrorNotification(errorMessage, receiver: clientContract.Sender);
             }
 
             try
             {
-                component.HandleClientMessage(clientContract);
+                foreach (var component in components)
+                {
+                    component.HandleClientMessage(clientContract);
+                }
             }
             catch (ServiceException serviceEx)
             {

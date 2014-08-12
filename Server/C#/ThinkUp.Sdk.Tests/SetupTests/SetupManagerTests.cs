@@ -20,7 +20,7 @@ namespace ThinkUp.Sdk.Tests.SetupTests
             var plugin = setupManager.GetPlugin() as IPluginSetup;
 
             Assert.IsNotNull(plugin);
-            Assert.AreEqual(3, plugin.Components.Count());
+            Assert.AreEqual(4, plugin.Components.Count());
         }
     }
 }

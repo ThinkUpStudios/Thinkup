@@ -71,9 +71,12 @@
     <Compile Include="SetupTests\SetupManagerTests.cs" />
     <Compile Include="TestModels\ITestServiceFoo.cs" />
     <Compile Include="TestModels\ITestServiceBar.cs" />
+    <Compile Include="TestModels\TestClientMessage.cs" />
     <Compile Include="TestModels\TestConfigurator.cs" />
     <Compile Include="TestModels\TestEntity.cs" />
-    <Compile Include="TestModels\TestPluginComponent.cs" />
+    <Compile Include="TestModels\TestMessageTypes.cs" />
+    <Compile Include="TestModels\TestPluginComponentBar.cs" />
+    <Compile Include="TestModels\TestPluginComponentFoo.cs" />
     <Compile Include="TestModels\TestRepository.cs" />
     <Compile Include="TestModels\TestServerMessage.cs" />
     <Compile Include="TestModels\TestServiceBar.cs" />
