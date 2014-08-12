@@ -8,7 +8,7 @@
     <owners>$author$</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>First version of Think Up Client SignalR</releaseNotes>
+    <releaseNotes>Fix on User Manager</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>thinkup thinkupclient</tags>
   </metadata>

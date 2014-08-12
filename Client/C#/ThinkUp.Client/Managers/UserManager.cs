@@ -6,7 +6,7 @@ using ThinkUp.Sdk.Contracts.ServerMessages;
 
 namespace ThinkUp.Client.SignalR.Managers
 {
-	public class UserManager
+	public class UserManager : IUserManager
 	{
 		private readonly IServerListener<UserConnectedServerMessage> connectedUserListener;
 		private readonly IPluginService<DisconnectUserClientMessage, UserDisconnectedServerMessage> disconnectUserService;
@@ -52,7 +52,7 @@ namespace ThinkUp.Client.SignalR.Managers
 			this.disconnectUserService.Send(disconnectUserClientMessage);
         }
 
-		public void GetConnectedUsers(GetConnectedUsersClientMessage getConnectedUsersClientMessage)
+		public void RequestConnectedUsers(GetConnectedUsersClientMessage getConnectedUsersClientMessage)
         {
 			this.connectedUsersService.Send(getConnectedUsersClientMessage);
         }

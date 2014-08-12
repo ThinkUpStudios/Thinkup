@@ -4,6 +4,8 @@ using System.Linq;
 using ThinkUp.Sdk.Contracts.ClientMessages;
 using ThinkUp.Sdk.Plugins;
 using ThinkUp.Sdk.Plugins.PluginComponents;
+using ThinkUp.Sdk.Services;
+using ThinkUp.Sdk.Tests.TestModels;
 
 namespace ThinkUp.Sdk.Tests.PluginTests
 {
@@ -67,6 +69,45 @@ namespace ThinkUp.Sdk.Tests.PluginTests
             Assert.IsTrue(canHandleTestMessage);
 
             this.testPluginComponentMock.VerifyAll();
+        }
+
+        [TestMethod]
+        public void When_HandleTestMessageWithMultipleComponents_Then_Success()
+        {
+            var notificationsSent = 0;
+            var notificationServiceMock = new Mock<INotificationService>();
+
+            notificationServiceMock
+                .Setup(s => s.Send(It.Is<int>(x => x == TestServerMessageType.TestServer), It.Is<object>(x => x.GetType() == typeof(TestServerMessage)), It.Is<string>(x => x == this.userName)))
+                .Callback(() => notificationsSent++)
+                .Verifiable();
+
+            var notificationService = notificationServiceMock.Object;
+
+            var plugin = new Plugin(this.serializer);
+
+            plugin.RegisterComponent(new TestPluginComponentFoo(notificationService, this.serializer));
+            plugin.RegisterComponent(new TestPluginComponentBar(notificationService, this.serializer));
+
+            var clientMessage = new TestClientMessage
+            {
+                UserName = this.userName
+            };
+            var clientContract = new ClientContract
+            {
+                Sender = this.userName,
+                Type = TestClientMessageType.TestClient,
+                SerializedClientMessage = this.serializer.Serialize(clientMessage)
+            };
+            var serializedClientContract = this.serializer.Serialize(clientContract);
+            var canHandleTestMessage = plugin.CanHandleClientMessage(serializedClientContract);
+
+            plugin.HandleClientMessage(serializedClientContract);
+
+            Assert.IsTrue(canHandleTestMessage);
+            Assert.AreEqual(2, notificationsSent);
+
+            notificationServiceMock.VerifyAll();
         }
     }
 }
