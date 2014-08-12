@@ -8,7 +8,7 @@
     <owners>$author$</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Fix on Conversation Detail Server Message</releaseNotes>
+    <releaseNotes>Added support to handle same client message with multiple components</releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>thinkup</tags>
   </metadata>
